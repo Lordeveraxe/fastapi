@@ -3,3 +3,5 @@ hypercorn
 tensorflow
 numpy
 pillow
+gdown
+keras
