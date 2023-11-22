@@ -13,7 +13,7 @@ url = 'https://drive.google.com/uc?id=1wMb03-UkWY2PmWkvZKUxXZppuINfOFza'
 gdown.download(url, 'my_trained_model.h5', quiet=False)
 
 # Load the model
-model = keras.models.load_model('/opt/render/project/src/my_trained_model.h5')
+model = keras.models.load_model('/app/my_trained_model.h5')
 
 app = FastAPI()
 
