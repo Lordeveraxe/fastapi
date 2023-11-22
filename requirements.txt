@@ -6,3 +6,4 @@ pillow
 keras
 gdown
 python-multipart
+uvicorn
