@@ -2,3 +2,4 @@ fastapi
 hypercorn
 tensorflow
 numpy
+PIL
