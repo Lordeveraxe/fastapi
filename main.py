@@ -2,7 +2,6 @@ from fastapi import FastAPI, File, UploadFile
 from PIL import Image
 import numpy as np
 import io
-import gdown
 import numpy as np
 import tensorflow as tf
 import keras
