@@ -5,6 +5,8 @@ import io
 import tensorflow as tf
 import keras
 import gdown
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # URL from Google Drive
 url = 'https://drive.google.com/uc?id=1wMb03-UkWY2PmWkvZKUxXZppuINfOFza'
