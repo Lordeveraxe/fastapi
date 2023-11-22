@@ -6,16 +6,15 @@ import tensorflow as tf
 import keras
 import gdown
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
-# URL from Google Drive
+model_file = 'my_trained_model.h5'
+model_path = os.path.join('/app', model_file)
 url = 'https://drive.google.com/uc?id=1wMb03-UkWY2PmWkvZKUxXZppuINfOFza'
 
-# Download the file
-gdown.download(url, 'my_trained_model.h5', quiet=False)
+if not os.path.isfile(model_path):
+    gdown.download(url, model_path, quiet=False)
 
-# Load the model
-model = keras.models.load_model('/app/my_trained_model.h5')
+model = keras.models.load_model(model_path)
 
 app = FastAPI()
 
