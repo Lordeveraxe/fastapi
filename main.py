@@ -5,9 +5,16 @@ import io
 import numpy as np
 import tensorflow as tf
 import keras
+import gdown
+
+# URL de Google Drive
+url = 'https://drive.google.com/uc?id=1wMb03-UkWY2PmWkvZKUxXZppuINfOFza'
+
+# Descarga el archivo
+gdown.download(url, 'my_trained_model.h5', quiet=False)
 
 # Carga el modelo
-model = keras.models.load_model('/app/model.h5')
+model = keras.models.load_model('/app/my_trained_model.h5')
 
 app = FastAPI()
 
