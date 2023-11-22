@@ -13,7 +13,7 @@ url = 'https://drive.google.com/uc?id=1wMb03-UkWY2PmWkvZKUxXZppuINfOFza'
 gdown.download(url, 'my_trained_model.h5', quiet=False)
 
 # Load the model
-model = keras.models.load_model('/app/my_trained_model.h5')
+#model = keras.models.load_model('/app/my_trained_model.h5')
 
 app = FastAPI()
 
@@ -29,8 +29,8 @@ async def create_upload_file(file: UploadFile = File(...)):
     image_array = np.array(image)
 
     # Predict with your model
-    prediction = model.predict(np.array([image_array]))
-    predicted_classes = np.argmax(prediction, axis=1)
+    #prediction = model.predict(np.array([image_array]))
+    #predicted_classes = np.argmax(prediction, axis=1)
     vegetables = {'Bean': 0,
                   'Bitter_Gourd': 1,
                   'Bottle_Gourd': 2,
@@ -47,6 +47,6 @@ async def create_upload_file(file: UploadFile = File(...)):
                   'Radish': 13,
                   'Tomato': 14}
     for key, value in vegetables.items():
-        if value == predicted_classes[0]:
+       # if value == predicted_classes[0]:
             print(key)
-    return {"prediction": prediction.tolist()}
+    return {"prediction": 12} #prediction.tolist()}
