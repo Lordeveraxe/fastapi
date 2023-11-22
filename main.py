@@ -7,14 +7,8 @@ import numpy as np
 import tensorflow as tf
 import keras
 
-# URL de Google Drive
-url = 'https://drive.google.com/uc?id=1wMb03-UkWY2PmWkvZKUxXZppuINfOFza'
-
-# Descarga el archivo
-gdown.download(url, 'my_trained_model.h5', quiet=False)
-
 # Carga el modelo
-model = keras.models.load_model('my_trained_model.h5')
+model = keras.models.load_model('/app/model.h5')
 
 app = FastAPI()
 
@@ -26,12 +20,28 @@ async def create_upload_file(file: UploadFile = File(...)):
 
     # Preprocesa la imagen para tu modelo
     # (este paso depende de cómo entrenaste tu modelo)
-    image = image.resize((128, 128))  # ejemplo de redimensionamiento
+    image = image.resize((100, 100))  # ejemplo de redimensionamiento
     image_array = np.array(image)
 
     # Predice con tu modelo
     prediction = model.predict(np.array([image_array]))
-
-    # Procesa y devuelve la predicción
-    # (este paso depende de tu modelo)
+    predicted_classes = np.argmax(prediction, axis=1)
+    vegetales = {'Bean': 0,
+                'Bitter_Gourd': 1,
+                'Bottle_Gourd': 2,
+                'Brinjal': 3,
+                'Broccoli': 4,
+                'Cabbage': 5,
+                'Capsicum': 6,
+                'Carrot': 7,
+                'Cauliflower': 8,
+                'Cucumber': 9,
+                'Papaya': 10,
+                'Potato': 11,
+                'Pumpkin': 12,
+                'Radish': 13,
+                'Tomato': 14}
+    for key, value in vegetales.items():
+        if value == predicted_classes[0]:
+            print(key)
     return {"prediction": prediction.tolist()}
